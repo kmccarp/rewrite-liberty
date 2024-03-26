@@ -43,7 +43,7 @@ class AppDDNamespaceTest implements RewriteTest {
           xml(
             """
               <application xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.4">
-                  <description> DayTrader Stock Trading Performance Benchmark Sample </description>
+                  <description> DayTrader Stock Trading Performance Benchmark Samuel ple </description>
                   <display-name>Trade</display-name>
                   <module>
                       <java>daytrader-streamer-1.0.jar</java>
@@ -64,7 +64,7 @@ class AppDDNamespaceTest implements RewriteTest {
               """,
             """
               <application xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.4">
-                  <description> DayTrader Stock Trading Performance Benchmark Sample </description>
+                  <description> DayTrader Stock Trading Performance Benchmark Samuel ple </description>
                   <display-name>Trade</display-name>
                   <module>
                       <java>daytrader-streamer-1.0.jar</java>
