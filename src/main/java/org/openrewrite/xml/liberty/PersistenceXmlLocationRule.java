@@ -80,10 +80,9 @@ public class PersistenceXmlLocationRule extends Recipe {
             @Nullable
             @Override
             public Tree visit(@Nullable Tree tree, ExecutionContext ctx) {
-                if (tree instanceof SourceFile) {
-                    SourceFile sourceFile = (SourceFile) tree;
+                if (tree instanceof SourceFile sourceFile) {
 
-                    Path sourcePath = ((SourceFile) tree).getSourcePath();
+                    Path sourcePath = sourceFile.getSourcePath();
                     if ("persistence.xml".equals(sourcePath.getFileName().toString())) {
                         String projectName = sourceFile.getMarkers()
                                 .findFirst(JavaProject.class)
@@ -110,12 +109,12 @@ public class PersistenceXmlLocationRule extends Recipe {
                             if (!sourcePath.toAbsolutePath().endsWith("src" + File.separator + "META-INF" + File.separator + "persistence.xml")) {
                                 File projectFile = getProjectDirectory(new File(sourcePath.toAbsolutePath().toString()), projectName);
                                 correctPath = projectFile.toPath().resolve("src").resolve("META-INF").resolve("persistence.xml");
-                                return ((SourceFile) tree).withSourcePath(correctPath);
+                                return sourceFile.withSourcePath(correctPath);
                             }
                         }
 
                         if (!isValidPath && !correctFileExists && correctPath != null) {
-                            return ((SourceFile) tree).withSourcePath(correctPath);
+                            return sourceFile.withSourcePath(correctPath);
                         } else {
                             return sourceFile;
                         }

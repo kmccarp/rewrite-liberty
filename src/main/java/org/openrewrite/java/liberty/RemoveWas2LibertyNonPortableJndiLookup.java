@@ -64,9 +64,8 @@ public class RemoveWas2LibertyNonPortableJndiLookup extends Recipe {
                 return methodCall;
             }
             // Remove the method invocation when the argumentMatcherPredicate is true for all arguments
-            Expression firstArg = methodCall.getArguments().get(0);
-            if (firstArg instanceof J.Literal) {
-                J.Literal literalExp = (J.Literal) firstArg;
+            Expression firstArg = methodCall.getArguments().getFirst();
+            if (firstArg instanceof J.Literal literalExp) {
                 Object value = literalExp.getValue();
                 if (!value.equals("java.naming.factory.initial") && !value.equals("java.naming.provider.url")) {
                     return methodCall;

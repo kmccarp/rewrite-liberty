@@ -53,7 +53,7 @@ public class WebSphereUnavailableSSOCookieMethod extends Recipe {
                     return JavaTemplate.builder("#{any()}.logout()")
                             .javaParser(JavaParser.fromJavaVersion().classpathFromResources(ctx, "websecurity_logout_test"))
                             .build()
-                            .apply(getCursor(), method.getCoordinates().replace(), method.getArguments().get(0));
+                            .apply(getCursor(), method.getCoordinates().replace(), method.getArguments().getFirst());
                 }
                 return super.visitMethodInvocation(method, ctx);
             }
